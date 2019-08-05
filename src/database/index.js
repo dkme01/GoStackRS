@@ -1,10 +1,10 @@
-import Sequelize from 'sequelize';
+import Sequelize from 'sequelize'; // importa o sequelize, que cuida das migrations do banco de dados
 
-import User from '../app/models/User';
+import User from '../app/models/User'; // importa a model de usuário
 
-import databaseConfig from '../config/database';
+import databaseConfig from '../config/database'; // importa a configuração de database
 
-const models = [User];
+const models = [User]; // define a model usuário como um(a) objeto/variável
 
 class Database {
   constructor() {
