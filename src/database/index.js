@@ -2,10 +2,11 @@ import Sequelize from 'sequelize'; // importa o sequelize, que cuida das migrati
 
 import User from '../app/models/User'; // importa a model de usuário
 import File from '../app/models/File'; // importa a model de arquivos
+import Appointment from '../app/models/Appointment'; // importa a model de appointments
 
 import databaseConfig from '../config/database'; // importa a configuração de database
 
-const models = [User, File]; // define as models como objetos/variáveisy
+const models = [User, File, Appointment]; // define as models como objetos/variáveisy
 
 class Database {
   constructor() {
