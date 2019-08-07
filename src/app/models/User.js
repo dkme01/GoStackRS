@@ -26,6 +26,11 @@ class User extends Model {
     return this;
   }
 
+  // refencia o campo de id do avatar de usuário
+  static associate(models) {
+    this.belongsTo(models.file, { foreignKey: 'avatar_id', as: 'avatar' });
+  }
+
   // verifica senha
   checkPassword(password) {
     return bcrypt.compare(password, this.password_hash);

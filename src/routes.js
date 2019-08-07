@@ -5,6 +5,8 @@ import multerConfig from './config/multer'; // importa a configuração do multe
 
 import UserController from './app/controllers/UserController'; // controller de usuário
 import SessionController from './app/controllers/SessionController'; // controller de sessão
+import FileController from './app/controllers/FileController'; // controller de arquivos
+import ProviderController from './app/controllers/ProviderController'; // controller de providers
 
 import authMiddleware from './app/middlewares/auth'; // middleware de autenticação de sessão
 
@@ -14,9 +16,10 @@ const upload = multer(multerConfig); // config do upload de arquivos
 /* rotas post */
 routes.post('/users', UserController.store); // post de usuários
 routes.post('/sessions', SessionController.store); // post de sessão
-routes.post('/files', upload.single('file'), (req, res) => {
-  return res.json({ ok: true });
-}); // post de upload de arquivos
+routes.post('/files', upload.single('file'), FileController.store); // post de upload de arquivos
+
+/* rotas get */
+routes.get('/providers', ProviderController.index); // get de providers
 
 /* rotas de middlewares */
 routes.use(authMiddleware); // middleware de autenticação
