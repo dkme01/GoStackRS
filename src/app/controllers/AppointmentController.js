@@ -2,6 +2,13 @@ import * as Yup from 'yup';
 import Appointment from '../models/Appointment';
 import User from '../models/User';
 
+// classe para criação de sessão, que não são inseridas no banco de dados
+// 1º -> realiza a validação através do Yup
+// 2º -> verifica se o schema do Yup é válido
+// 3º -> recebe as informações do corpo (body) da requisição
+// 4º -> verifica se o usuário está criando um appointment com um provider
+// 5º -> caso não seja, retorna um erro ao usuário
+// 6º -> cria o appointment e retorna as informações
 class AppointmentController {
   async store(req, res) {
     const schema = Yup.object().shape({
