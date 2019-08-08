@@ -28,7 +28,7 @@ class User extends Model {
 
   // refencia o campo de id do avatar de usuário
   static associate(models) {
-    this.belongsTo(models.file, { foreignKey: 'avatar_id', as: 'avatar' });
+    this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
   }
 
   // verifica senha
