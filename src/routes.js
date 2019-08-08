@@ -7,24 +7,24 @@ import UserController from './app/controllers/UserController'; // controller de 
 import SessionController from './app/controllers/SessionController'; // controller de sessão
 import FileController from './app/controllers/FileController'; // controller de arquivos
 import ProviderController from './app/controllers/ProviderController'; // controller de providers
+import AppointmentController from './app/controllers/AppointmentController'; // controller de agendamentos
 
 import authMiddleware from './app/middlewares/auth'; // middleware de autenticação de sessão
 
 const routes = new Router();
 const upload = multer(multerConfig); // config do upload de arquivos
 
-/* rotas post */
 routes.post('/users', UserController.store); // post de usuários
 routes.post('/sessions', SessionController.store); // post de sessão
-routes.post('/files', upload.single('file'), FileController.store); // post de upload de arquivos
 
-/* rotas get */
-routes.get('/providers', ProviderController.index); // get de providers
-
-/* rotas de middlewares */
 routes.use(authMiddleware); // middleware de autenticação
 
-/* rotas put */
 routes.put('/users', UserController.update); // put de usuário
+
+routes.get('/providers', ProviderController.index); // get de providers
+
+routes.post('/files', upload.single('file'), FileController.store); // post de upload de arquivos
+
+routes.post('/appointments', AppointmentController.store); // post de agendamentos
 
 export default routes;
