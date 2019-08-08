@@ -1,6 +1,6 @@
-import * as Yup from 'yup';
-import Appointment from '../models/Appointment';
-import User from '../models/User';
+import * as Yup from 'yup'; // importa o Yup para fazer a validação dos campos
+import Appointment from '../models/Appointment'; // importa a model de agendamentos
+import User from '../models/User'; // importa a model de usuários
 
 // classe para criação de sessão, que não são inseridas no banco de dados
 // 1º -> realiza a validação através do Yup
