@@ -25,6 +25,7 @@ routes.get('/providers', ProviderController.index); // get de providers
 
 routes.post('/files', upload.single('file'), FileController.store); // post de upload de arquivos
 
+routes.get('/appointments', AppointmentController.index); // get de agendamentos
 routes.post('/appointments', AppointmentController.store); // post de agendamentos
 
 export default routes;
