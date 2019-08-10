@@ -1,10 +1,16 @@
-import { startOfDay, endOfDay, parseISO } from 'date-fns';
-import { Op } from 'sequelize';
+import { startOfDay, endOfDay, parseISO } from 'date-fns'; // importa o date-fns para manipulação de datas
+import { Op } from 'sequelize'; // importa o operador do sequelize
 
-import Appointment from '../models/Appointment';
-import User from '../models/User';
+import Appointment from '../models/Appointment'; // importa a model de agendamentos
+import User from '../models/User'; // importa a model de usuários
 
 class ScheduleController {
+  // classe para listagem de agendamentos dos providers
+  // 1º -> verifica se o usuário é um provider
+  // 2º -> caso não seja, retorna um erro
+  // 3º -> formata a data para realizar a busca
+  // 4º -> busca todos os agendamentos do provider no periodo de 24 horas
+  // 5º -> retorna os agendamentos para o provider
   async index(req, res) {
     const checkUserProvider = await User.findOne({
       where: { id: req.userId, provider: true },

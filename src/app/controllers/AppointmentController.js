@@ -1,19 +1,12 @@
 import * as Yup from 'yup'; // importa o Yup para fazer a validação dos campos
-import { startOfHour, parseISO, isBefore } from 'date-fns';
+import { startOfHour, parseISO, isBefore } from 'date-fns'; // importa o date-fns para manipulação de datas
 import Appointment from '../models/Appointment'; // importa a model de agendamentos
 import User from '../models/User'; // importa a model de usuários
 import File from '../models/File'; // importa a model de arquivos
 
-// classe para criação de sessão, que não são inseridas no banco de dados
-// 1º -> realiza a listagem de todos os agendamentos do usuário
-// 2º -> realiza a validação através do Yup
-// 3º -> verifica se o schema do Yup é válido
-// 4º -> recebe as informações do corpo (body) da requisição
-// 5º -> verifica se o usuário está criando um appointment com um provider
-// 6º -> caso não seja, retorna um erro ao usuário
-// 7º -> verifica se a data do agendamento não é passada (antes do dia/horário atual)
-// 8º -> cria o appointment e retorna as informações
 class AppointmentController {
+  // classe para listagem de agendamentos
+  // 1º -> realiza a listagem de todos os agendamentos do usuário
   async index(req, res) {
     const { page = 1 } = req.query;
 
@@ -41,6 +34,15 @@ class AppointmentController {
     return res.json(appointments);
   }
 
+  // classe para criação de agendamentos, que não são inseridas no banco de dados
+  // 1º -> realiza a validação através do Yup
+  // 2º -> verifica se o schema do Yup é válido
+  // 3º -> recebe as informações do corpo (body) da requisição
+  // 4º -> verifica se o usuário está criando um appointment com um provider
+  // 5º -> caso não seja, retorna um erro ao usuário
+  // 6º -> verifica se a data do agendamento não é passada (antes do dia/horário atual)
+  // 7º -> verifica se o horário do agendamento está disponível
+  // 8º -> cria o appointment e retorna as informações
   async store(req, res) {
     const schema = Yup.object().shape({
       provider_id: Yup.number().required(),
