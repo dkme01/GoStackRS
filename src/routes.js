@@ -8,6 +8,7 @@ import SessionController from './app/controllers/SessionController'; // controll
 import FileController from './app/controllers/FileController'; // controller de arquivos
 import ProviderController from './app/controllers/ProviderController'; // controller de providers
 import AppointmentController from './app/controllers/AppointmentController'; // controller de agendamentos
+import ScheduleController from './app/controllers/ScheduleController';
 
 import authMiddleware from './app/middlewares/auth'; // middleware de autenticação de sessão
 
@@ -23,9 +24,11 @@ routes.put('/users', UserController.update); // put de usuário
 
 routes.get('/providers', ProviderController.index); // get de providers
 
-routes.post('/files', upload.single('file'), FileController.store); // post de upload de arquivos
-
 routes.get('/appointments', AppointmentController.index); // get de agendamentos
 routes.post('/appointments', AppointmentController.store); // post de agendamentos
+
+routes.get('/schedule', ScheduleController.index); // get de agenda do provider
+
+routes.post('/files', upload.single('file'), FileController.store); // post de upload de arquivos
 
 export default routes;
