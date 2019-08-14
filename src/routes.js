@@ -31,6 +31,7 @@ routes.post('/appointments', AppointmentController.store); // post de agendament
 routes.get('/schedule', ScheduleController.index); // get de agenda do provider
 
 routes.get('/notifications', NotificationController.index); // get de notificações do provider
+routes.put('/notifications/:id', NotificationController.update); // put de notificações do provider
 
 routes.post('/files', upload.single('file'), FileController.store); // post de upload de arquivos
 
