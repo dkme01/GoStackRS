@@ -9,6 +9,7 @@ import FileController from './app/controllers/FileController'; // controller de 
 import ProviderController from './app/controllers/ProviderController'; // controller de providers
 import AppointmentController from './app/controllers/AppointmentController'; // controller de agendamentos
 import ScheduleController from './app/controllers/ScheduleController';
+import NotificationController from './app/controllers/NotificationController';
 
 import authMiddleware from './app/middlewares/auth'; // middleware de autenticação de sessão
 
@@ -28,6 +29,8 @@ routes.get('/appointments', AppointmentController.index); // get de agendamentos
 routes.post('/appointments', AppointmentController.store); // post de agendamentos
 
 routes.get('/schedule', ScheduleController.index); // get de agenda do provider
+
+routes.get('/notifications', NotificationController.index); // get de notificações do provider
 
 routes.post('/files', upload.single('file'), FileController.store); // post de upload de arquivos
 
