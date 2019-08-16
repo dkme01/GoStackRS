@@ -33,10 +33,11 @@ class Mail {
         viewEngine: exphbs.create({
           layoutsDir: resolve(viewPath, 'layouts'),
           partialsDir: resolve(viewPath, 'partials'),
-          extname: '.hbs',
+          defaultLayout: 'default',
+          extName: '.hbs',
         }),
         viewPath,
-        extname: '.hbs',
+        extName: '.hbs',
       })
     );
   }
