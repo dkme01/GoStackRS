@@ -8,12 +8,12 @@ import SessionController from './app/controllers/SessionController'; // controll
 import FileController from './app/controllers/FileController'; // controller de arquivos
 import ProviderController from './app/controllers/ProviderController'; // controller de providers
 import AppointmentController from './app/controllers/AppointmentController'; // controller de agendamentos
-import ScheduleController from './app/controllers/ScheduleController';
-import NotificationController from './app/controllers/NotificationController';
+import ScheduleController from './app/controllers/ScheduleController'; // controller de agenda do provider
+import NotificationController from './app/controllers/NotificationController'; // controller de notificações
 
 import authMiddleware from './app/middlewares/auth'; // middleware de autenticação de sessão
 
-const routes = new Router();
+const routes = new Router(); // router para redirecionamento das rotas do programa
 const upload = multer(multerConfig); // config do upload de arquivos
 
 routes.post('/users', UserController.store); // post de usuários
