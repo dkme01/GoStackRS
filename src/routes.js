@@ -10,6 +10,7 @@ import ProviderController from './app/controllers/ProviderController'; // contro
 import AppointmentController from './app/controllers/AppointmentController'; // controller de agendamentos
 import ScheduleController from './app/controllers/ScheduleController'; // controller de agenda do provider
 import NotificationController from './app/controllers/NotificationController'; // controller de notificações
+import AvailableController from './app/controllers/AvailableController'; // controller de horários disponíveis
 
 import authMiddleware from './app/middlewares/auth'; // middleware de autenticação de sessão
 
@@ -24,6 +25,7 @@ routes.use(authMiddleware); // middleware de autenticação
 routes.put('/users', UserController.update); // put de usuário
 
 routes.get('/providers', ProviderController.index); // get de providers
+routes.get('/providers/:providerId/available', AvailableController.index); // get de horários disponíveis
 
 routes.get('/appointments', AppointmentController.index); // get de agendamentos
 routes.post('/appointments', AppointmentController.store); // post de agendamentos
