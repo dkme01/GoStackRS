@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import Bee from 'bee-queue'; // import para controlar processos em fila
 import CancellationMail from '../app/jobs/CancellationMail'; // importa a configuração do processo sobre email de cancelamento
 import redisConfig from '../config/redis'; // importa a configuração do redis (banco performatico para registrar os processos)
