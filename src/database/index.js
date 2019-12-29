@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize'; // importa o sequelize, que cuida das migrations do banco de dados
-import mongoose from 'mongoose'; //
+import mongoose from 'mongoose'; // importa o mongoose para o banco do mongo
 
 import User from '../app/models/User'; // importa a model de usuário
 import File from '../app/models/File'; // importa a model de arquivos

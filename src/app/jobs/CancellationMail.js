@@ -13,8 +13,6 @@ class CancellationMail {
   async handle({ data }) {
     const { appointment } = data; // recebe a data do agendamento a ser cancelado
 
-    console.log('A fila executou'); // DELETAR
-
     await Mail.sendMail({
       to: `${appointment.provider.name} <${appointment.provider.email}>`,
       subject: 'Agendamento Cancelado',
