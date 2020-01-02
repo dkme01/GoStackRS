@@ -1,5 +1,6 @@
 import * as Yup from 'yup'; // importa o Yup para fazer a validação dos campos
 import User from '../models/User'; // importa o model de usuário
+import File from '../models/File'; // importa o model de files
 
 class UserController {
   // classe para criação de usuários
@@ -81,13 +82,23 @@ class UserController {
       return res.status(401).json({ error: 'Password does not match' });
     }
 
-    const { id, name, provider } = await user.update(req.body);
+    await user.update(req.body);
+
+    const { id, name, avatar } = await User.findByPk(req.userId, {
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['id', 'path', 'url'],
+        },
+      ],
+    });
 
     return res.json({
       id,
       name,
       email,
-      provider,
+      avatar,
     });
   }
 }
